@@ -16,9 +16,9 @@ get '/about' do
   erb :about
 end
 
-get '/contact' do
+get '/contacts' do
   @title = "Contact Us"
-  erb :contact
+  erb :contacts
 end
 
 not_found do
