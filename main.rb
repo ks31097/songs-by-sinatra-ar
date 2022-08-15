@@ -12,11 +12,13 @@ get '/' do
 end
 
 get '/about' do
+  @title = "About Us"
   erb :about
 end
 
-get '/contact' do
-  erb :contact
+get '/contacts' do
+  @title = "Contact Us"
+  erb :contacts
 end
 
 not_found do
