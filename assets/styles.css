@@ -1,9 +1,5 @@
-.container {
-  padding-left: 26px;
-  padding-right: 26px;
-}
-
 h1 {
+  margin-top: 10px;
   color: #903;
   font: 32px/1 Helvetica, Arial, sans-serif;
 }
@@ -15,6 +11,19 @@ header h1 {
   padding-left: 84px;
 }
 
+.navbar-brand {
+  font: 20px/1.4 Helvetica, Arial, sans-serif;
+}
+
+.nav-link {
+  font: 18px/1.4 Helvetica, Arial, sans-serif;
+}
+
 p {
-  font: 13px/1.4 Helvetica, Arial, sans-serif;
+  font: 18px/1.4 Helvetica, Arial, sans-serif;
+}
+
+.nav-link[aria-current="page"] {
+  text-decoration: underline wavy #903 0.15rem;
+  text-underline-offset: 0.5rem;
 }
