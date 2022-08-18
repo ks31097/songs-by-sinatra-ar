@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require './song'
 
 set :public_folder, 'assets'
 
