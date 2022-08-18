@@ -1,0 +1,45 @@
+:root {
+  --main-font: Helvetica, Arial, sans-serif;
+  --red: #903;
+}
+
+h1 {
+  margin-top: 10px;
+  color: var(--red);
+  font: 32px/1 var(--main-font);
+}
+
+header h1 {
+  font-size: 40px;
+  line-height: 80px;
+  background: transparent url(/images/logo.png) 0 0 no-repeat;
+  padding-left: 84px;
+}
+
+.navbar-brand {
+  font: 20px/1.4 var(--main-font);
+  color: var(--red)
+}
+
+.nav-link {
+  font: 18px/1.4 var(--main-font);
+}
+
+p {
+  font: 18px/1.4 var(--main-font);
+}
+
+.nav-link[aria-current="page"] {
+  text-decoration: underline wavy var(--red) 0.15rem;
+  text-underline-offset: 0.5rem;
+}
+
+.form-position {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.position {
+  text-align: center;
+}

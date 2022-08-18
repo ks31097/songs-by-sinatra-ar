@@ -1,0 +1,27 @@
+<h1><%= @song.title %></h1>
+
+<% if @song.datestamp != "" %>
+  <p>Release Date: <%= Date.parse(@song.datestamp).strftime("%e %B %Y") %></p>
+<% else %>
+  <p>Release Date: none</p>
+<% end %>
+
+<!-- <p>Release Date: <%# Date.parse(@song.datestamp).strftime("%e %B %Y") if @song.datestamp != "" %></p> -->
+
+<% if @song.length %>
+  <p>Length: <%= "#{@song.length/60} minutes #{@song.length%60} seconds" %></p>
+<% else %>
+  <p>Length: none</p>
+<% end %>
+
+<!-- <p>Length: <%# ("#{@song.length/60} minutes #{@song.length%60} seconds") if @song.length  %></p> -->
+
+<pre><%= @song.lyrics %></pre>
+
+<p><a href="/songs">Back to songs list</a></p>
+<p><a href="/songs/<%= @song.id %>/edit">Edit song</a></p>
+
+<form action="/songs/<%= @song.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit" class="btn btn-primary">Delete song</button>
+</form>
