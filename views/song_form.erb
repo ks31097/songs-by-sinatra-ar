@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-md-8 mb-3">
+  <label>Song title:</label>
+  <input name="song[title]" type="text" class="form-control" placeholder="Enter song title" value="<%= @song.title %>" autocomplete="off">
+</div>
+
+<div class="col-xs-12 col-md-8 mb-3">
+  <label>Lyrics:</label>
+  <input name="song[lyrics]" type="text" class="form-control" placeholder="Enter song lyrics" value="<%= @song.lyrics %>" autocomplete="off">
+</div>
+
+<div class="col-xs-12 col-md-8 mb-3">
+  <label>Song length:</label>
+  <input name="song[length]" type="number" class="form-control" placeholder="Enter song length" value="<%= "#{@song.length}" %>" autocomplete="off">
+</div>
+
+<div class="col-xs-12 col-md-8 mb-3">
+  <label>Release date (in the format: 00 Month 0000):</label>
+  <input name="song[datestamp]" type="text" class="form-control" placeholder="Enter release date" value="<%= "#{@song.datestamp}" %>" autocomplete="off">
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
