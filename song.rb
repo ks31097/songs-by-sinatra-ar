@@ -1,13 +1,17 @@
 require 'sinatra/activerecord'
 require 'date'
+require 'sinatra/flash'
 
 configure :development do
   set :database, {adapter: "sqlite3", database: "development.sqlite3"}
 end
 
 class Song < ActiveRecord::Base
+  validates :title, presence: true, length: { minimum: 4 }
+  validates :lyrics, presence: true, length: { minimum: 5 }
+  validates :length, presence: true
+  validates :datestamp, presence: true
 end
-
 
 get '/songs' do
   @songs = Song.all
@@ -15,8 +19,13 @@ get '/songs' do
 end
 
 get '/songs/new' do
-  @song = Song.new
-  erb :new_song
+  unless session[:admin]
+    flash[:notice] = "You are not logged in!"
+    redirect to("/login")
+  else
+    @song = Song.new
+    erb :new_song
+  end
 end
 
 post '/songs/new' do
@@ -24,7 +33,7 @@ post '/songs/new' do
   if @song.save
     redirect to("/songs/#{@song.id}")
   else
-    @error = @song.errors.full_messages.first
+  @error = @song.errors.full_messages
     erb :new_song
   end
 end
@@ -35,8 +44,13 @@ get '/songs/:id' do
 end
 
 get '/songs/:id/edit' do
-  @song = Song.find(params[:id])
-  erb :edit_song
+  unless session[:admin]
+    flash[:notice] = "You are not logged in!"
+    redirect to("/login")
+  else
+    @song = Song.find(params[:id])
+    erb :edit_song
+  end
 end
 
 put '/songs/:id' do
@@ -46,7 +60,12 @@ put '/songs/:id' do
 end
 
 delete '/songs/:id' do
-  @song = Song.find(params[:id])
-  @song.destroy
-  redirect to('/songs')
+  unless session[:admin]
+    flash[:notice] = "You are not logged in!"
+    redirect to("/login")
+  else
+    @song = Song.find(params[:id])
+    @song.destroy
+    redirect to('/songs')
+  end
 end
