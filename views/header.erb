@@ -23,6 +23,15 @@
         <li class="nav-item">
           <a class="nav-link active" href="/contacts">Contact Us</a>
         </li>
+        <% unless session[:admin] %>
+          <li class="nav-item">
+            <a class="nav-link active" href="/login">Login</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link active" href="/logout">Logout</a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
