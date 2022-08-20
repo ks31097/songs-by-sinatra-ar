@@ -1,6 +1,9 @@
 require 'sinatra/activerecord'
 require 'date'
 require 'sinatra/flash'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 configure :development do
   set :database, {adapter: "sqlite3", database: "development.sqlite3"}
