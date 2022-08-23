@@ -16,11 +16,6 @@ header h1 {
   padding-left: 84px;
 }
 
-.navbar-brand {
-  font: 20px/1.4 var(--main-font);
-  color: var(--red)
-}
-
 .nav-link {
   font: 18px/1.4 var(--main-font);
 }
@@ -36,10 +31,24 @@ p {
 
 .form-position {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
 }
 
 .position {
   text-align: center;
+}
+
+.notice {
+  padding: 5px;
+  font-weight: bold;
+  margin: 10px;
+  color: #008000;
+}
+
+.error-message {
+  padding: 5px;
+  font-weight: bold;
+  margin: 10px;
+  color: var(--red);
 }
