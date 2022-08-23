@@ -10,17 +10,27 @@ configure do
   set :password, 'sinatra'
 end
 
+helpers do
+  def current?(path='/')
+    (request.path==path || request.path==path+'/') ? 'nav-link px-2 link-secondary' : 'nav-link px-2 link-dark'
+  end
+
+  def set_title
+    @title ||= 'Songs By Sinatra'
+  end
+end
+
 before do
-  @title = "Songs By Sinatra"
+  set_title
 end
 
-get '/set/:name' do
-  session[:name] = params[:name]
-end
-
-get '/get/hello' do
-  "Hello #{session[:name]}"
-end
+# get '/set/:name' do
+#   session[:name] = params[:name]
+# end
+#
+# get '/get/hello' do
+#   "Hello #{session[:name]}"
+# end
 
 get '/' do
   erb :home
@@ -37,6 +47,7 @@ get '/contacts' do
 end
 
 get '/login' do
+  @title = "Login"
   erb :login
 end
 
@@ -45,6 +56,7 @@ post '/login' do
     session[:admin] = true
     redirect to('/songs')
     else
+    flash.now[:'error-message'] = "Enter the correct username and password!"
     erb :login
   end
 end
